@@ -3,9 +3,9 @@ import axios from "axios";
 
 const SellerDashboard = () => {
   const [products, setProducts] = useState([]);
-  const [orders, setOrders] = useState([]); // State to store fetched orders
+  const [orders, setOrders] = useState([]); 
   const [showPopup, setShowPopup] = useState(false);
-  const [showOrders, setShowOrders] = useState(false); // Toggle orders visibility
+  const [showOrders, setShowOrders] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   const [product, setProduct] = useState({ name: "", description:"", price: "", quantity: "", image: "" });
 
@@ -25,7 +25,7 @@ const SellerDashboard = () => {
   const fetchOrders = async () => {
     try {
       const res = await axios.get("http://localhost:5000/order/seller", { withCredentials: true });
-      setOrders(res.data); // Set orders from the response
+      setOrders(res.data);
     } catch (error) {
       console.error("Error fetching orders:", error.response?.data?.message);
     }

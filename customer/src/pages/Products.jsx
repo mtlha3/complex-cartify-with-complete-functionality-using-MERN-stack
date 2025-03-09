@@ -76,7 +76,7 @@ const Products = () => {
             <div
               key={index}
               className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-              onClick={() => openModal(product)} // Trigger the modal on click of product card
+              onClick={() => openModal(product)} 
             >
               <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded" />
               <h3 className="text-xl font-semibold mt-2">{product.name}</h3>
@@ -88,7 +88,7 @@ const Products = () => {
                     : "bg-gray-400 text-white cursor-not-allowed"
                   }`}
                 onClick={(e) => {
-                  e.stopPropagation(); // Prevent modal from being triggered when clicking the Add to Cart button
+                  e.stopPropagation(); 
                   addToCart(product);
                 }}
                 disabled={product.quantity === 0}

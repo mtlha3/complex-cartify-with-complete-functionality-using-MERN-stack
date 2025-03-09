@@ -23,7 +23,7 @@ const cartSlice = createSlice({
       const item = state.find(item => item.id === action.payload);
       if (item && item.quantity > 1) item.quantity -= 1;
     },
-    resetCart: () => [], // ✅ RESET CART BEFORE FETCHING NEW DATA
+    resetCart: () => [], 
   },
 });
 

@@ -37,7 +37,7 @@ const ForgotPasswordModal = ({ isOpen, onClose }) => {
     try {
       const response = await axios.post("http://localhost:5000/api/auth/reset-password", { email, password });
       setMessage(response.data.message);
-      onClose(); // Close modal after successful password reset
+      onClose();
     } catch (err) {
       setError(err.response?.data?.message || "Error resetting password");
     }

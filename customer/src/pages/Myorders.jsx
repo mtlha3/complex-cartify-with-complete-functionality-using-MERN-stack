@@ -2,41 +2,37 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const MyOrders = () => {
-  const [orders, setOrders] = useState([]); // Store orders here
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state for handling failed API calls
+  const [orders, setOrders] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         setLoading(true);
-        // Make a GET request to fetch the orders for the authenticated user
         const response = await axios.get('http://localhost:5000/order/user', {
-          withCredentials: true, // Ensures token is sent automatically with request
+          withCredentials: true, 
         });
-        setOrders(response.data); // Set the orders data in the state
+        setOrders(response.data); 
       } catch (err) {
-        setError('Failed to fetch orders'); // Handle error state
+        setError('Failed to fetch orders'); 
         console.error('Error fetching orders:', err);
       } finally {
-        setLoading(false); // Set loading to false once the API call is complete
+        setLoading(false); 
       }
     };
 
     fetchOrders();
-  }, []); // Empty dependency array means this effect will run only once when the component mounts
+  }, []); 
 
-  // If orders are loading, show a loading message
   if (loading) {
     return <div>Loading orders...</div>;
   }
 
-  // If there's an error, show the error message
   if (error) {
     return <div>{error}</div>;
   }
 
-  // If no orders are found, show a message
   if (orders.length === 0) {
     return <div>No orders found.</div>;
   }
@@ -46,10 +42,10 @@ const MyOrders = () => {
       <h2>Your Orders</h2>
       <ul>
         {orders.map((order) => (
-          <li key={order.Id}> {/* Assuming each order has a unique Id */}
+          <li key={order.Id}> {/*orders always has a unique Id */}
             <h3>Order ID: {order.Id}</h3>
             <p>Status: {order.status}</p>
-            <p>Total Price: ${order.totalAmount}</p> {/* Corrected to `totalAmount` */}
+            <p>Total Price: ${order.totalAmount}</p>
             <ul>
               {order.cartItems && order.cartItems.length > 0 ? (
                 order.cartItems.map((item, index) => (

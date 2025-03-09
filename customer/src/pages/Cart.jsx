@@ -26,7 +26,7 @@ const Cart = () => {
       dispatch(resetCart());
       response.data.forEach((item) => dispatch(addItem(item)));
     } catch (error) {
-      console.error("❌ Error fetching cart:", error.response?.data || error.message);
+      console.error(" Error fetching cart:", error.response?.data || error.message);
     } finally {
       setLoading(false);
     }
@@ -47,7 +47,7 @@ const Cart = () => {
       dispatch(removeItem(productId));
       fetchCart(); 
     } catch (error) {
-      console.error("❌ Error removing item from cart:", error.response?.data || error.message);
+      console.error("Error removing item from cart:", error.response?.data || error.message);
     }
   };
 
@@ -60,7 +60,7 @@ const Cart = () => {
         { productId },
         { withCredentials: true }
       );
-      fetchCart();  // This will refresh the cart
+      fetchCart();
     } catch (error) {
       console.error("❌ Error incrementing quantity:", error.response?.data || error.message);
     }
@@ -75,7 +75,7 @@ const Cart = () => {
         { productId },
         { withCredentials: true }
       );
-      fetchCart();  // This will refresh the cart
+      fetchCart(); 
     } catch (error) {
       console.error("❌ Error decrementing quantity:", error.response?.data || error.message);
     }
