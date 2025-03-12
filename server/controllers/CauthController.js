@@ -72,6 +72,30 @@ export const login = async (req, res) => {
 };
 
 
+// controller for checking auth status
+export const checkAuthStatus = (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).json({ isAuthenticated: false, message: "Access denied" });
+  }
+
+  try {
+    const verifiedUser = jwt.verify(token, process.env.JWT_SECRET);
+    res.json({ isAuthenticated: true, user: verifiedUser });
+  } catch (error) {
+    res.status(400).json({ isAuthenticated: false, message: "Invalid token" });
+  }
+};
+
+//controller for cookies clearing
+export const logout = (req, res) => {
+  res.clearCookie("token", { httpOnly: true, secure: true, sameSite: "None" });
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
+
+
 // controller for forgot password for customer side
 export const forgotPassword = async (req, res) => {
   try {
