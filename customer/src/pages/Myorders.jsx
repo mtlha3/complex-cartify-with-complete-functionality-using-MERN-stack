@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Nav from '../components/Nav';
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]); 
@@ -39,6 +40,7 @@ const MyOrders = () => {
 
   return (
     <div>
+      <Nav/>
       <h2>Your Orders</h2>
       <ul>
         {orders.map((order) => (

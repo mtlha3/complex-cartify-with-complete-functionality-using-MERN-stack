@@ -4,6 +4,7 @@ import axios from "axios";
 import { addItem } from "../features/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Nav from "../components/Nav";
 
 const Products = () => {
   const { storeId } = useParams();
@@ -27,6 +28,8 @@ const Products = () => {
   }, [storeId]);
 
   const addToCart = async (product) => {
+    if (product.quantity === 0) return; // Prevent adding out-of-stock items
+
     const cartItem = {
       productId: product.productId,
       name: product.name,
@@ -63,10 +66,7 @@ const Products = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <nav className="mb-5 flex gap-4">
-        <Link to="/" className="text-blue-500">Home</Link>
-        <Link to="/cart" className="text-blue-500">Cart ({cart.length})</Link>
-      </nav>
+      <Nav />
 
       <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">Store Products</h1>
 
@@ -76,7 +76,7 @@ const Products = () => {
             <div
               key={index}
               className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-              onClick={() => openModal(product)} 
+              onClick={() => openModal(product)}
             >
               <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded" />
               <h3 className="text-xl font-semibold mt-2">{product.name}</h3>
@@ -84,12 +84,12 @@ const Products = () => {
               <p className="text-gray-600">Price: ${product.price}</p>
               <button
                 className={`px-4 py-2 rounded-lg mt-2 ${product.quantity > 0
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-400 text-white cursor-not-allowed"
-                  }`}
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-400 text-white cursor-not-allowed"
+                }`}
                 onClick={(e) => {
-                  e.stopPropagation(); 
-                  addToCart(product);
+                  e.stopPropagation();
+                  if (product.quantity > 0) addToCart(product); // Prevents action if out of stock
                 }}
                 disabled={product.quantity === 0}
               >
@@ -120,10 +120,12 @@ const Products = () => {
                 <p className="text-gray-600 mt-2">Price: ${selectedProduct.price}</p>
                 <button
                   className={`px-4 py-2 rounded-lg mt-4 ${selectedProduct.quantity > 0
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-400 text-white cursor-not-allowed"
-                    }`}
-                  onClick={() => selectedProduct.quantity > 0 && addToCart(selectedProduct)}
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-400 text-white cursor-not-allowed"
+                  }`}
+                  onClick={() => {
+                    if (selectedProduct.quantity > 0) addToCart(selectedProduct);
+                  }}
                   disabled={selectedProduct.quantity === 0}
                 >
                   {selectedProduct.quantity > 0 ? "Add to Cart" : "Out of Stock"}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { removeItem, incrementQuantity, decrementQuantity, addItem, resetCart } from "../features/cartSlice";
-
+import Nav from "../components/Nav";
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -108,6 +108,7 @@ const Cart = () => {
 
   return (
     <div className="p-5">
+      <Nav/>
       <h2 className="text-2xl font-bold mb-3">Shopping Cart</h2>
 
       {loading ? (

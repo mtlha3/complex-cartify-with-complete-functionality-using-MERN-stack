@@ -18,7 +18,7 @@ const Login = () => {
         { withCredentials: true }
       );
       alert("Login successful!");
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       alert("Invalid credentials");
       console.error(error);
