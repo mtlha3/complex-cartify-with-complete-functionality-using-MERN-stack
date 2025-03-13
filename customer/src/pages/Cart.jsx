@@ -107,8 +107,9 @@ const Cart = () => {
   };
 
   return (
-    <div className="p-5">
+    <>
       <Nav/>
+    <div className="p-5">
       <h2 className="text-2xl font-bold mb-3">Shopping Cart</h2>
 
       {loading ? (
@@ -116,6 +117,7 @@ const Cart = () => {
       ) : cart.length === 0 ? (
         <p className="text-gray-500">Your cart is empty.</p>
       ) : (
+        
         <>
           <ul className="border p-4 rounded-lg shadow-md">
             {cart.map((item) => (
@@ -188,6 +190,7 @@ const Cart = () => {
         </>
       )}
     </div>
+    </>
   );
 };
 

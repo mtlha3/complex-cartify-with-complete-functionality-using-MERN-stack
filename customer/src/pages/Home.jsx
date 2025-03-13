@@ -21,8 +21,10 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-6">
+    <>
+    
       <Nav/>
+    <div className="container mx-auto p-6">
       <h1 className="text-4xl font-bold text-center mb-10 text-gray-800">Our Stores</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {stores.map((store, index) => (
@@ -43,6 +45,7 @@ const Home = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

@@ -39,12 +39,14 @@ const MyOrders = () => {
   }
 
   return (
-    <div>
+    <>
+    
       <Nav/>
+    <div>
       <h2>Your Orders</h2>
       <ul>
         {orders.map((order) => (
-          <li key={order.Id}> {/*orders always has a unique Id */}
+          <li key={order.Id}> 
             <h3>Order ID: {order.Id}</h3>
             <p>Status: {order.status}</p>
             <p>Total Price: ${order.totalAmount}</p>
@@ -63,6 +65,7 @@ const MyOrders = () => {
         ))}
       </ul>
     </div>
+    </>
   );
 };
 
