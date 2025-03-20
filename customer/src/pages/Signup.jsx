@@ -27,44 +27,53 @@ const Signup = () => {
 
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-bold text-center mb-4">Sign Up</h2>
-        <form onSubmit={handleSignup} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Seller's Store Name"
-            value={name}
-            onChange={(e) => setname(e.target.value)}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-          >
-            Sign Up
-          </button>
-        </form>
-      </div>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-indigo-600">
+    <div className="bg-white/30 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-96 border border-white/40">
+      <h2 className="text-3xl font-bold text-center text-white mb-6">Sign Up</h2>
+  
+      <form onSubmit={handleSignup} className="space-y-5">
+        <input
+          type="text"
+          placeholder="Username "
+          value={name}
+          onChange={(e) => setname(e.target.value)}
+          className="w-full p-3 bg-white/70 border border-white/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/80 transition duration-300"
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-3 bg-white/70 border border-white/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/80 transition duration-300"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-3 bg-white/70 border border-white/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/80 transition duration-300"
+          required
+        />
+  
+        <button
+          type="submit"
+          className="w-full bg-white text-blue-600 p-3 rounded-lg font-semibold hover:bg-blue-100 transition duration-300"
+        >
+          Sign Up
+        </button>
+      </form>
+  
+      <p className="mt-4 text-white text-sm text-center">
+        Already have an account?{" "}
+        <a href="/login" className="font-bold underline hover:text-white/90">
+          Login
+        </a>
+      </p>
     </div>
+  </div>
+  
   );
 };
 
