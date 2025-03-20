@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Nav from "../components/Nav";
 import { toast } from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
+import { API_URL } from "../config";
 
 const Products = () => {
   const { storeId } = useParams();
@@ -20,7 +21,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/product/store/${storeId}`);
+        const response = await axios.get(`${API_URL}/product/store/${storeId}`);
         setProducts(response.data.products);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -29,7 +30,7 @@ const Products = () => {
 
     const checkAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/auth/status", { withCredentials: true });
+        const response = await axios.get(`${API_URL}/auth/status`, { withCredentials: true });
         setIsAuthenticated(response.data.isAuthenticated);
       } catch (error) {
         setIsAuthenticated(false);
@@ -58,7 +59,7 @@ const Products = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/cart/add",
+        `${API_URL}/cart/add`,
         cartItem,
         { withCredentials: true }
       );

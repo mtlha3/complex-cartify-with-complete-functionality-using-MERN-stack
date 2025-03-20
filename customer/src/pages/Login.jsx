@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ForgotPasswordModal from "./ForgotPasswordModal";
 import toast from "react-hot-toast";
+import { API_URL } from "../config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const Login = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/auth/login",
+        `${API_URL}/auth/login`,
         { email, password },
         { withCredentials: true }
       );

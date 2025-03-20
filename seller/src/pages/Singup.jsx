@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { API_URL } from "../config";
 
 const Signup = () => {
   const [Storename, setStorename] = useState("");
@@ -14,7 +15,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        `${API_URL}/api/auth/signup`,
         { Storename, email, password, image }, 
         { withCredentials: true }
       );

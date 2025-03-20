@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { API_URL } from "../config";
 
 const SellerDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -22,7 +23,7 @@ const SellerDashboard = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/product/seller", {
+      const res = await axios.get(`${API_URL}/product/seller`, {
         withCredentials: true,
       });
       setProducts(res.data.products);
@@ -33,7 +34,7 @@ const SellerDashboard = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/order/seller", {
+      const res = await axios.get(`${API_URL}/order/seller`, {
         withCredentials: true,
       });
       setOrders(res.data);
@@ -72,14 +73,14 @@ const SellerDashboard = () => {
     try {
       if (editingProduct) {
         const res = await axios.put(
-          `http://localhost:5000/product/edit/${editingProduct.productId}`,
+          `${API_URL}/product/edit/${editingProduct.productId}`,
           product,
           { withCredentials: true }
         );
         alert(res.data.message || "Product updated successfully");
       } else {
         const res = await axios.post(
-          "http://localhost:5000/product/add",
+          `${API_URL}/product/add`,
           product,
           { withCredentials: true }
         );
@@ -116,7 +117,7 @@ const SellerDashboard = () => {
       if (!confirmDelete) return;
 
       await axios.delete(
-        `http://localhost:5000/product/delete/${productToDelete.productId}`,
+        `${API_URL}/product/delete/${productToDelete.productId}`,
         { withCredentials: true }
       );
 
@@ -131,7 +132,7 @@ const SellerDashboard = () => {
   const handleStatusChange = async (orderId, newStatus) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/order/status/${orderId}`,
+        `${API_URL}/order/status/${orderId}`,
         { status: newStatus },
         { withCredentials: true }
       );
@@ -149,7 +150,7 @@ const SellerDashboard = () => {
   const logout = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/auth/logout",
+        `${API_URL}/auth/logout`,
         {},
         { withCredentials: true }
       );
