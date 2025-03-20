@@ -1,0 +1,13 @@
+{
+    "build": {
+      "builder": "NIXPACKS",
+      "nixpacks": {
+        "phases": {
+          "install": "cd server && npm install",
+          "build": "cd server && npm run build"
+        }
+      }
+    },
+    "start": "cd server && node server.js"
+  }
+  
