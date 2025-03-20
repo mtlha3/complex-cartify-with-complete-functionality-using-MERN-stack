@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { API_URL } from "../config";
 
 const Login = () => {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);

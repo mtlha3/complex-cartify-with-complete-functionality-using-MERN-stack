@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Nav from "../components/Nav";
 import { toast } from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
-import { API_URL } from "../config";
+
 
 const Products = () => {
+  const API_URL = process.env.REACT_APP_API_URL;
   const { storeId } = useParams();
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);

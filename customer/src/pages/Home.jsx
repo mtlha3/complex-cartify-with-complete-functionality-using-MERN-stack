@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Nav from "../components/Nav";
-import { API_URL } from "../config";
+
 
 const Home = () => {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [stores, setStores] = useState([]);
   const navigate = useNavigate();
 

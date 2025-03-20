@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
-import { API_URL } from "../config"
+
 
 const ForgotPasswordModal = ({ isOpen, onClose }) => {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");

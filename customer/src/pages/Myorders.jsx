@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Nav from '../components/Nav';
-import { API_URL } from "../config";
+
 
 const MyOrders = () => {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [orders, setOrders] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);

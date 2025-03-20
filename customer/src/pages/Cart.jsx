@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { API_URL } from "../config";
+
 import {
   removeItem,
   incrementQuantity,
@@ -12,6 +12,7 @@ import {
 import Nav from "../components/Nav";
 import toast, { Toaster } from "react-hot-toast";
 const Cart = () => {
+  const API_URL = process.env.REACT_APP_API_URL;
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
@@ -129,7 +130,10 @@ const Cart = () => {
         error.response?.data || error.message
       );
     }
+  
   };
+
+
 
   return (
     <>
