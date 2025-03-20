@@ -60,10 +60,11 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "*",
+    origin: true,
     credentials: true,
   })
 );
+
 
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
