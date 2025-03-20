@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Signup = () => {
   const [Storename, setStorename] = useState("");
@@ -18,10 +19,10 @@ const Signup = () => {
         { withCredentials: true }
       );
 
-      alert("Signup successful! Please log in.");
+      toast.success("Signup successful! Please log in.");
       navigate("/");
     } catch (error) {
-      alert(error.response?.data?.message || "Signup failed.");
+      toast.error(error.response?.data?.message || "Signup failed.");
       console.error(error);
     }
   };
@@ -36,56 +37,88 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-bold text-center mb-4">Sign Up</h2>
-        <form onSubmit={handleSignup} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Seller's Store Name"
-            value={Storename}
-            onChange={(e) => setStorename(e.target.value)}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
+    <div
+  className="flex justify-center items-center min-h-screen bg-cover bg-center px-4"
+  style={{
+    backgroundImage:
+      "url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1600&q=80')",
+  }}
+>
+  <div className="bg-white/30 backdrop-blur-xl p-10 rounded-3xl shadow-2xl w-[420px] border border-gray-200 transition-all hover:scale-105">
+    <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">
+      🏪 Seller Sign Up
+    </h2>
+    <p className="text-center text-gray-700 mb-6 text-lg">
+      Create your store and start selling today!
+    </p>
 
-          <label htmlFor="imageUpload" className="block text-sm text-gray-600">
-            Add Store Image
-          </label>
+    <form onSubmit={handleSignup} className="space-y-6">
+      <div>
+        <input
+          type="text"
+          placeholder="Store Name"
+          value={Storename}
+          onChange={(e) => setStorename(e.target.value)}
+          className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="email"
+          placeholder="Email Address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="imageUpload" className="block text-sm font-medium text-gray-800 mb-2">
+          Upload Store Image
+        </label>
+        <div className="relative flex items-center justify-center w-full border border-gray-300 rounded-xl bg-gray-100 p-3 cursor-pointer hover:bg-gray-200 transition">
           <input
             id="imageUpload"
             type="file"
             accept="image/*"
             onChange={handleImageUpload}
-            className="border p-2 mb-2 w-full rounded"
+            className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
             aria-label="Upload store image"
           />
-
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-          >
-            Sign Up
-          </button>
-        </form>
+          <span className="text-gray-600">📷 Choose Image</span>
+        </div>
       </div>
-    </div>
+
+      <button
+        type="submit"
+        className="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 rounded-xl hover:shadow-xl hover:scale-[1.02] transition-all font-semibold text-lg"
+      >
+        🚀 Sign Up
+      </button>
+    </form>
+
+    <p className="text-center text-gray-800 mt-5">
+      Already have an account?{" "}
+      <a href="/login" className="text-blue-600 font-medium hover:underline transition-all hover:scale-105">
+        Log in
+      </a>
+    </p>
+  </div>
+</div>
+
+  
   );
 };
 
