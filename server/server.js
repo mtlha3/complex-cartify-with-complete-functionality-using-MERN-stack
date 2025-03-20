@@ -15,13 +15,19 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+const allowedOrigins = ["http://localhost:5173", "https://caritfymarketplace.vercel.app"];
 app.use(
-    cors({
-      origin: "http://localhost:5173",
-      credentials: true,
-    })
-  );
-app.use(express.json({ limit: "50mb" })); 
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
 app.use("/api/auth", authRoutes);
@@ -32,10 +38,5 @@ app.use("/order", orderRoutes);
 
 connectDB();
 
-app.get('/', (req, res)=>{
-  res.send('Server is running') 
-})
-
-export default app;
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
