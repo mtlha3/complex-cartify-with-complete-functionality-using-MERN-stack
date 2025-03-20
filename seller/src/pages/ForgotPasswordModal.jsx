@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { API_URL } from "../config";
+
 
 const ForgotPasswordModal = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
@@ -11,7 +11,9 @@ const ForgotPasswordModal = ({ isOpen, onClose }) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  const API_URL = process.env.REACT_APP_API_URL;
   const handleSendOTP = async () => {
+
     try {
       const response = await axios.post(
         `${API_URL}/api/auth/forgot-password`,

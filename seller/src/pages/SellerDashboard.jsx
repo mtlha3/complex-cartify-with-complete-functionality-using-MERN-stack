@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import { API_URL } from "../config";
+
 
 const SellerDashboard = () => {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
