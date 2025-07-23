@@ -66,7 +66,7 @@ app.use(
 );
 
 
-app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
 app.use("/api/auth", authRoutes);
 app.use("/auth", CauthRoutes);
