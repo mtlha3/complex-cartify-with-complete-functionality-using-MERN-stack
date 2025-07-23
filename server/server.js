@@ -74,6 +74,10 @@ app.use("/product", productRoutes);
 app.use("/cart", cartRoutes);
 app.use("/order", orderRoutes);
 
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
 connectDB();
 
 const PORT = process.env.PORT || 5000;
