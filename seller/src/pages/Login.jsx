@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 const Login = () => {
   const API_URL = import.meta.env.VITE_BASE_URL;
@@ -34,7 +34,7 @@ const Login = () => {
       });
       toast.success("Password reset link sent!");
       setIsForgotPasswordOpen(false);
-      setForgotEmail(""); 
+      setForgotEmail("");
     } catch (error) {
       toast.error("Failed to send reset link.");
       console.error(error);
@@ -94,12 +94,12 @@ const Login = () => {
             </button>
             <p className="text-gray-600">
               Don't have an account?{" "}
-              <a
-                href="/signup"
+              <Link
+                to="/signup"
                 className="text-blue-600 font-medium hover:underline transition-all hover:scale-105"
               >
                 Sign Up
-              </a>
+              </Link>
             </p>
           </div>
         </div>
