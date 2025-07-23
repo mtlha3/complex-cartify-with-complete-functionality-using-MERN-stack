@@ -60,7 +60,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: true,
+    origin: "https://seller-side-wine.vercel.app",
     credentials: true,
   })
 );
