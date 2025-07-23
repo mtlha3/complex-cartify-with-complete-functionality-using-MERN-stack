@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 
 
 const Products = () => {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const { storeId } = useParams();
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);

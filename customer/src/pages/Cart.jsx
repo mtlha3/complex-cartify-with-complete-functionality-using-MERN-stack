@@ -12,7 +12,7 @@ import {
 import Nav from "../components/Nav";
 import toast, { Toaster } from "react-hot-toast";
 const Cart = () => {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);

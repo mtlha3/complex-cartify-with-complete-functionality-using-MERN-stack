@@ -5,7 +5,7 @@ import Nav from "../components/Nav";
 
 
 const Home = () => {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const [stores, setStores] = useState([]);
   const navigate = useNavigate();
 

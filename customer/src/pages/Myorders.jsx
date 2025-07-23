@@ -4,7 +4,7 @@ import Nav from '../components/Nav';
 
 
 const MyOrders = () => {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const [orders, setOrders] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);

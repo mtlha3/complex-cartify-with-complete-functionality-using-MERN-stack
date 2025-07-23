@@ -4,7 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 
 const SellerDashboard = () => {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
